@@ -1,9 +1,21 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 
+/**
+ * @desc - manage request
+ * @return {object} - isloading {bool} : to know state of request - sendRequest {function} : to send the request
+ */
 const useFetch = () => {
     const [isLoading, setIsLoading] = useState(false);
     const activeHttpRequests = useRef([]);
 
+    /**
+     * @desc - To send the request. Manages abort's request
+     * @param url {string} - for the request
+     * @param method {string} - for choose the method
+     * @param body {object} - body of request
+     * @param header {object} - headers of request
+     * @return {promise} response - if the request is good, returns json's response else returns request's error
+     */
     const sendRequest = useCallback(async (url, method='GET', body=null, headers={}) => {
         try {
             setIsLoading(true);
