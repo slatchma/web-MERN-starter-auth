@@ -1,6 +1,14 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useFetch } from './hooks/useFetch';
 import './App.css';
+
+const MessageTranslation = () => {
+  const { t } = useTranslation();
+
+  return <p>{t('hello world')}</p>;
+};
+
 
 const App = () => {
   const { sendRequest } = useFetch();
@@ -13,7 +21,10 @@ const App = () => {
   }, [sendRequest]);
 
   return (
-      <div>Hello world || backend url = {process.env.REACT_APP_BACKEND_URL}</div>
+      <div>
+      <MessageTranslation />
+        <p>backend url = {process.env.REACT_APP_BACKEND_URL}</p>
+      </div>
   );
 }
 
