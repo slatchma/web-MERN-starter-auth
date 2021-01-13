@@ -1,8 +1,8 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import translationEn from './translate/en.json';
-import translationEs from './translate/es.json';
-import translationFr from './translate/fr.json';
+import translationEn from './translation/en.json';
+import translationEs from './translation/es.json';
+import translationFr from './translation/fr.json';
 
 let language = "en";  
 if (navigator.language.search(`es`) >= 0) {
