@@ -16,16 +16,16 @@ const useFetch = () => {
      * @param header {object} - headers of request
      * @return {promise} response - if the request is good, returns json's response else returns request's error
      */
-    const sendRequest = useCallback(async (url, method='GET', body=null, headers={}) => {
+    const sendRequest = useCallback(async (url, method='GET', body, headers={}) => {
         try {
             setIsLoading(true);
             const httpAbortCtrl = new AbortController();
             activeHttpRequests.current.push(httpAbortCtrl);
 
             const response = await fetch(url, {
-                method,
-                body,
-                headers,
+                method: method,
+                headers: headers,
+                body: JSON.stringify(body),
                 signal: httpAbortCtrl.signal
               })
              
